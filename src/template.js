@@ -13,12 +13,12 @@
 
 ;(function () {
   let css = ''
-  css += '_font_mian'
+  css += '{$1}'
   const endsWithDomain = domain => {
     const url = window.location.hostname
     return url.endsWith(domain)
   }
-  // @insertSpecialHandling
+  // {$2}
 
   if (typeof GM_addStyle !== 'undefined') {
     GM_addStyle(css)

@@ -87,8 +87,8 @@ async function main () {
 
     // 替换字符串
     const resultContent = sourceContent
-      .replace('_font_mian', cssContent)
-      .replace('@insertSpecialHandling', `@insertSpecialHandling\n${specialHandlingCode.join('\n')}`)
+      .replace('{$1}', cssContent)
+      .replace('{$2}', `{$2}\n${specialHandlingCode.join('\n')}`)
 
     // 写入结果到目标文件
     await writeFileContent(targetPath, resultContent)
