@@ -73,7 +73,7 @@ html:is(:lang(ar), :lang(he), :lang(th), :lang(vi)) {
   font-family: var.$system_rules;
 }
 
-$font-families: 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp';
+$font-families: 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC';
 
 @each $font-family in $font-families {
   @font-face {
