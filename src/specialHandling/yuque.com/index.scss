@@ -1,0 +1,15 @@
+@use "../../scss/var.scss" as var;
+
+.doc-title,
+.ne-engine,
+.ne-viewer-body,
+.ne-toc-view,
+.DocReader-module_title_fXOQi>h1,
+.catalogTreeItem-module_title_snpKw {
+  font-family: var.$chinese_rules !important;
+}
+
+.cm-line,
+ne-code-content {
+  font-family: var.$code_rules !important;
+}

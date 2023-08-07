@@ -1,0 +1,9 @@
+@use "../../scss/var.scss" as var;
+
+td,
+input,
+button,
+select,
+body {
+  font-family: var.$chinese_rules !important;
+}

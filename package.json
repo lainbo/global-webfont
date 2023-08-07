@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "sass": "sass --watch src/scss/index.scss:dist/index.css"
+    "sass:watch": "sass --no-charset --no-source-map --watch src/scss/index.scss:dist/index.css",
+    "build": "node ./generate.js",
+    "postbuild": "prettier --write dist/*"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.1",
     "sass": "^1.64.2"
   }
 }

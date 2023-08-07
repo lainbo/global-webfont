@@ -1,0 +1,15 @@
+@use "../../scss/var.scss" as var;
+
+#zh-CN button,
+#zh-CN input,
+#zh-CN select,
+#zh-CN textarea,
+.markdown-body {
+  font-family: var.$chinese_rules !important;
+}
+
+.code-block-content,
+.markdown-body code,
+.markdown-body pre {
+  font-family: var.$code_rules !important;
+}

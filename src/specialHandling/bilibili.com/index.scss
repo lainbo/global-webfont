@@ -1,0 +1,26 @@
+@use "../../scss/var.scss" as var;
+
+.lite-room,
+.header-channel,
+.channel-menu-mini,
+.bb-comment,
+.list-item .user .text-con,
+.video-page-card-small .card-box .info .title,
+.video-info-v1 .video-title,
+.carousel-tool,
+.bili-comment.browser-pc *,
+.bili-dyn-content,
+.bili-rich-text,
+.bili-dyn-item,
+.bili-video-card__info--bottom,
+.bili-header,
+.bili-video-card__info--tit,
+.bili-video-card__info--tit a,
+.browser-pc *,
+.video-page-card-small .card-box .info .title,
+.up-info-v1 .up-info_right .name,
+.first-line-title,
+.pl__head,
+.pl__title {
+  font-family: var.$chinese_rules !important;
+}

@@ -1,0 +1,5 @@
+@use "../../scss/var.scss" as var;
+
+* {
+  font-family: var.$chinese_rules;
+}

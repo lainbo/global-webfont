@@ -1,8 +1,43 @@
-$chinese: 'HarmonyOS Sans SC';
-$chinese-online: 'HarmonyOS_Medium';
-$english: 'Inter';
-$english-online: 'Inter';
-$emoji: 'Twemoji Mozilla';
-$system: 'system-ui';
-$monospace: 'JetBrainsMono NFM';
-$monospace-online: 'JetBrains Mono';
+// 字体定义
+
+// 无衬线中文字体
+$chinese: "HarmonyOS Sans SC";
+$chinese-online: "HarmonyOS_Medium";
+
+// 无衬线英文字体
+$english: "HarmonyOS Sans";
+$english-online: "HarmonyOS Sans";
+
+// emoji 字体
+$emoji: "Twemoji Mozilla";
+
+// 系统字体
+$system: "system-ui";
+
+// 等宽字体
+$monospace: "JetBrainsMono NFM";
+$monospace-online: "JetBrains Mono";
+
+// fallback 字体
+$chinese-base: "Noto Sans SC";
+
+// 系统字体规则
+$system_rules:
+  $system,
+  $chinese-base,
+  $emoji,
+  "Apple Color Emoji",
+  "Twemoji Mozilla",
+  Segoe UI,
+  Rototo,
+  Helvetica,
+  Arial,
+  sans-serif;
+
+// 中文拉丁字体规则
+$chinese_rules: $english, $chinese, $chinese-online, $chinese-base,
+  $system_rules;
+
+// 等宽字体规则
+$code_rules: $monospace, $monospace-online, $emoji, $system, "Cascadia Mono",
+  Menlo, Monaco, Consolas, $chinese, $chinese-online;

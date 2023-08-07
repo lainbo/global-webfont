@@ -1,0 +1,5 @@
+@use "../../scss/var.scss" as var;
+
+.doc-content>div .vp-table>table tr td:nth-child(2) {
+  font-family: var.$chinese_rules !important;
+}

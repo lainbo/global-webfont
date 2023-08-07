@@ -1,20 +1,16 @@
-@use './var.scss' as var;
+@use "./var.scss" as var;
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-body {
-  font-family: var.$english, var.$chinese, var.$chinese-online, 'Noto Sans SC', var.$emoji, system-ui, Segoe UI, Rototo, Helvetica, Arial, sans-serif;
-}
-
 pre,
 code,
 kbd,
 samp {
-  font-family: var.$monospace, var.$monospace-online, var.$emoji, var.$system, 'Cascadia Mono', Menlo, Monaco, Consolas,
-  var.$chinese, var.$chinese-online;
+  font-family: var.$code_rules;
 }
 
 button,
@@ -24,4 +20,62 @@ optgroup,
 select,
 textarea {
   font-family: inherit;
+}
+
+body,
+html,
+html:is( :lang(zh),
+  :lang(zh-CN),
+  :lang(zh-SG),
+  :lang(zh-Hans),
+  :lang(cmn),
+  :lang(cmn-Hans),
+  :lang(zh-cmn-Hans),
+  :lang(de),
+  :lang(nl),
+  :lang(en),
+  :lang(nb),
+  :lang(no),
+  :lang(is),
+  :lang(da),
+  :lang(sv),
+  :lang(pt),
+  :lang(es),
+  :lang(fr),
+  :lang(it),
+  :lang(ro),
+  :lang(lv),
+  :lang(lt),
+  :lang(pl),
+  :lang(cs),
+  :lang(sk),
+  :lang(bs),
+  :lang(hr),
+  :lang(sr),
+  :lang(bg),
+  :lang(sl),
+  :lang(ru),
+  :lang(uk),
+  :lang(be),
+  :lang(el),
+  :lang(hu),
+  :lang(et),
+  :lang(fi),
+  :lang(tr),
+  :lang(id),
+  :lang(ms)) body {
+  font-family: var.$chinese_rules;
+}
+
+html:is(:lang(ar), :lang(he), :lang(th), :lang(vi)) {
+  font-family: var.$system_rules;
+}
+
+$font-families: "Microsoft YaHei", "微软雅黑", "-apple-system";
+
+@each $font-family in $font-families {
+  @font-face {
+    font-family: "#{$font-family}";
+    src: local(var.$chinese);
+  }
 }
