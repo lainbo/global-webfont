@@ -1,0 +1,27 @@
+@use './var.scss' as var;
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var.$english, var.$chinese, var.$chinese-online, 'Noto Sans SC', var.$emoji, system-ui, Segoe UI, Rototo, Helvetica, Arial, sans-serif;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: var.$monospace, var.$monospace-online, var.$emoji, var.$system, 'Cascadia Mono', Menlo, Monaco, Consolas,
+  var.$chinese, var.$chinese-online;
+}
+
+button,
+input,
+keygen,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
