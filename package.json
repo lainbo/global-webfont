@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "sass:watch": "sass --no-charset --no-source-map --watch src/scss/index.scss:dist/index.css",
-    "build": "node ./generate.js",
-    "postbuild": "prettier --write dist/*"
+    "build": "node ./generate.js"
   },
   "keywords": [],
   "author": "",
