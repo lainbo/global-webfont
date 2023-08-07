@@ -12,19 +12,19 @@
 // ==/UserScript==
 
 ;(function () {
-	let css = ''
-	css += `_font_mian`
-	const endsWithDomain = domain => {
-		const url = window.location.hostname
-		return url.endsWith(domain)
-	}
-	// @insertSpecialHandling
+  let css = ''
+  css += '_font_mian'
+  const endsWithDomain = domain => {
+    const url = window.location.hostname
+    return url.endsWith(domain)
+  }
+  // @insertSpecialHandling
 
-	if (typeof GM_addStyle !== 'undefined') {
-		GM_addStyle(css)
-	} else {
-		const styleNode = document.createElement('style')
-		styleNode.appendChild(document.createTextNode(css))
-		;(document.querySelector('head') || document.documentElement).appendChild(styleNode)
-	}
+  if (typeof GM_addStyle !== 'undefined') {
+    GM_addStyle(css)
+  } else {
+    const styleNode = document.createElement('style')
+    styleNode.appendChild(document.createTextNode(css))
+    ;(document.querySelector('head') || document.documentElement).appendChild(styleNode)
+  }
 })()
