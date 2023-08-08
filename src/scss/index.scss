@@ -1,6 +1,8 @@
 @use "./var.scss" as var;
+@use "./rules.scss" as rules;
+@use "./languages.scss" as languages;
 @import url("https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css");
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Sans+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Naskh+Arabic:wght@500&family=Noto+Sans+KR&family=Noto+Sans+SC&display=swap');
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -8,11 +10,17 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+body,
+html,
+#{languages.$chinese-indo-european-selector} {
+  font-family: rules.$chinese_rules;
+}
+
 pre,
 code,
 kbd,
 samp {
-  font-family: var.$code_rules;
+  font-family: rules.$code_rules !important;
 }
 
 button,
@@ -24,60 +32,32 @@ textarea {
   font-family: inherit;
 }
 
-body,
-html,
-html:is( :lang(zh),
-  :lang(zh-CN),
-  :lang(zh-SG),
-  :lang(zh-Hans),
-  :lang(cmn),
-  :lang(cmn-Hans),
-  :lang(zh-cmn-Hans),
-  :lang(de),
-  :lang(nl),
-  :lang(en),
-  :lang(nb),
-  :lang(no),
-  :lang(is),
-  :lang(da),
-  :lang(sv),
-  :lang(pt),
-  :lang(es),
-  :lang(fr),
-  :lang(it),
-  :lang(ro),
-  :lang(lv),
-  :lang(lt),
-  :lang(pl),
-  :lang(cs),
-  :lang(sk),
-  :lang(bs),
-  :lang(hr),
-  :lang(sr),
-  :lang(bg),
-  :lang(sl),
-  :lang(ru),
-  :lang(uk),
-  :lang(be),
-  :lang(el),
-  :lang(hu),
-  :lang(et),
-  :lang(fi),
-  :lang(tr),
-  :lang(id),
-  :lang(ms)) body {
-  font-family: var.$chinese_rules;
-}
+// 当声明了下方字体时，按照我的规则进行字体文件读取
+$replace-chinese-font-list: 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC', 'Helvetica';
 
-html:is(:lang(ar), :lang(he), :lang(th), :lang(vi)) {
-  font-family: var.$system_rules;
-}
+// 生成font-face的mixin
+@mixin generate-font-faces($font-list, $rules) {
+  @each $font-family in $font-list {
+    $src-list: ();
 
-$font-families: 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC';
+    @each $rule in $rules {
+      @if type-of($rule)=='list' {
+        @each $inner-rule in $rule {
+          $src-list: append($src-list, unquote('local("#{$inner-rule}")'), comma);
+        }
+      }
 
-@each $font-family in $font-families {
-  @font-face {
-    font-family: '#{$font-family}';
-    src: local(var.$chinese);
+      @else {
+        $src-list: append($src-list, unquote('local("#{$rule}")'), comma);
+      }
+    }
+
+    @font-face {
+      font-family: '#{$font-family}';
+      src: $src-list;
+    }
   }
 }
+
+// 生成中文字体的替换规则
+@include generate-font-faces($replace-chinese-font-list, rules.$chinese_rules);

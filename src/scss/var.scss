@@ -1,30 +1,22 @@
 // 字体定义
-
-// 无衬线中文字体
-$chinese: "HONOR Sans CN";
+// 无衬线字体
+$chinese: "HarmonyOS Sans SC";
 $chinese-online: "HarmonyOS_Regular";
+$arabic: "Noto Naskh Arabic";
+$korean: "Noto Sans KR";
 
 // 无衬线英文字体
-$english: "HONOR Sans CN";
+$english: "HarmonyOS Sans";
 
 // emoji 字体
 $emoji: "Twemoji Mozilla";
 
 // 系统字体
-$system: "system-ui";
+$system: "Segoe UI";
 
 // 等宽字体
-$monospace: "JetBrainsMono NFM";
+$monospace: "JetBrainsMono NF";
 $monospace-online: "JetBrains Mono";
 
 // fallback 字体
 $chinese-base: "Noto Sans SC";
-
-// 系统字体规则
-$system_rules: $system, $chinese-base, $emoji, "Apple Color Emoji", "Twemoji Mozilla", Segoe UI, Rototo, Helvetica, Arial, sans-serif;
-
-// 中文拉丁字体规则
-$chinese_rules: $english, $chinese, $chinese-online, $system_rules;
-
-// 等宽字体规则
-$code_rules: $monospace, $monospace-online, $emoji, "Cascadia Mono", $system, Menlo, Monaco, Consolas, $chinese, $chinese-online;

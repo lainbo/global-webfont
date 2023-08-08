@@ -1,14 +1,14 @@
-@use "../../scss/var.scss" as var;
+@use "../../scss/rules.scss" as rules;
 
 .text-mono {
-  font-family: var.$code_rules !important;
+  font-family: rules.$code_rules !important;
 }
 
 .blob-num,
 .blob-code-inner {
-  font-family: var.$code_rules;
+  font-family: rules.$code_rules;
 }
 
 .markdown-body {
-  font-family: var.$chinese_rules !important;
+  font-family: rules.$chinese_rules !important;
 }

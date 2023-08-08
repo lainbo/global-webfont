@@ -1,15 +1,15 @@
-@use "../../scss/var.scss" as var;
+@use "../../scss/rules.scss" as rules;
 
 #zh-CN button,
 #zh-CN input,
 #zh-CN select,
 #zh-CN textarea,
 .markdown-body {
-  font-family: var.$chinese_rules !important;
+  font-family: rules.$chinese_rules !important;
 }
 
 .code-block-content,
 .markdown-body code,
 .markdown-body pre {
-  font-family: var.$code_rules !important;
+  font-family: rules.$code_rules !important;
 }

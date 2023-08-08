@@ -1,6 +1,0 @@
-@use "../../scss/var.scss" as var;
-
-.file_holder .file_content.code .lines pre,
-.file_holder .file_content.blame .lines pre {
-  font-family: var.$code_rules !important;
-}

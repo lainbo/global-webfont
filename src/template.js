@@ -14,10 +14,7 @@
 ;(function () {
   let css = ''
   css += '{$1}'
-  const endsWithDomain = domain => {
-    const url = window.location.hostname
-    return url.endsWith(domain)
-  }
+  const endsWithDomain = domain => window.location.hostname?.endsWith(domain)
   // {$2}
 
   if (typeof GM_addStyle !== 'undefined') {

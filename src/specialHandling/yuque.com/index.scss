@@ -1,4 +1,4 @@
-@use "../../scss/var.scss" as var;
+@use "../../scss/rules.scss" as rules;
 
 .doc-title,
 .ne-engine,
@@ -6,10 +6,10 @@
 .ne-toc-view,
 .DocReader-module_title_fXOQi>h1,
 .catalogTreeItem-module_title_snpKw {
-  font-family: var.$chinese_rules !important;
+  font-family: rules.$chinese_rules !important;
 }
 
 .cm-line,
 ne-code-content {
-  font-family: var.$code_rules !important;
+  font-family: rules.$code_rules !important;
 }

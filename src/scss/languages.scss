@@ -1,0 +1,65 @@
+@function joinLists($lists...) {
+  $result: ();
+
+  @each $list in $lists {
+    @if type-of($list)=='list' {
+      @each $item in $list {
+        $result: append($result, $item);
+      }
+    }
+
+    @else {
+      $result: append($result, $list);
+    }
+  }
+
+  @return $result;
+}
+
+
+// 中文语系
+$language-list-sc: zh, zh-CN, zh-SG, zh-Hans, cmn, cmn-Hans, zh-cmn-Hans;
+
+// 印欧语系/日耳曼语族：德语 Deutsch、荷兰语 Nederlands、英语 English、挪威语 Bokmål & Nynorsk、冰岛语 Íslenska、丹麦语 Dansk、瑞典语 Svenska
+$language-list-germanic: de, nl, en, nb, no, is, da, sv;
+
+// 印欧语系/意大利（罗曼）语族：葡萄牙语 Português、西班牙语 Español、法语 Français、意大利语 Italiano、罗马尼亚语 Română
+$language-list-italic: pt, es, fr, it, ro;
+
+// 印欧语系/波罗的-斯拉夫语族：拉脱维亚语 Latviešu、立陶宛语 Lietuvių、波兰语 Polski、捷克语 Čeština、斯洛伐克语 Slovenčina、波斯尼亚语 Bosanski、克罗地亚语 Hrvatski、塞尔维亚语 Srpski、保加利亚语 Български、斯洛文尼亚语 Slovenščina、俄语 Русский、乌克兰语 Українська、白俄罗斯语 Беларуская、
+$language-list-balto-slavic: lv, lt, pl, cs, sk, bs, hr, sr, bg, sl, ru, uk, be;
+
+// 印欧语系/希腊语族：希腊语 Ελληνικά
+$language-list-hellenic: el;
+
+// 总: 印欧语系
+$language-list-indo-european: joinLists($language-list-germanic, $language-list-italic, $language-list-balto-slavic, $language-list-hellenic);
+
+// 乌拉尔语系/匈牙利语族：匈牙利语 Magyar
+$language-list-magyar: hu;
+
+// 乌拉尔语系/波罗的-芬兰语族：爱沙尼亚语 Eesti、芬兰语 Suomi
+$language-list-finnic: et, fi;
+
+// 总: 乌拉尔语系
+$language-list-uralic: joinLists($language-list-magyar, $language-list-finnic);
+
+// 突厥语系：土耳其语 Türkçe
+$language-list-turkic: tr;
+
+// 南岛语系/马来-玻利尼西亚语族：印度尼西亚语 Bahasa Indonesia、马来语 Bahasa Melayu
+$language-list-malayo-polynesian: id, ms;
+
+// 南岛语系
+$language-list-austronesian: $language-list-malayo-polynesian;
+
+
+// ==========中文和印欧语系的选择器==========
+$chinese-indo-european-selector: (
+);
+$chinese-indo-european-list: joinLists($language-list-sc, $language-list-indo-european, $language-list-uralic, $language-list-turkic, $language-list-austronesian );
+
+// 生成中文和印欧语系选择器
+@each $lang in $chinese-indo-european-list {
+  $chinese-indo-european-selector: append($chinese-indo-european-selector, unquote('html:lang(#{$lang}) body'), 'comma');
+}

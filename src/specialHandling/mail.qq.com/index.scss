@@ -1,9 +1,9 @@
-@use "../../scss/var.scss" as var;
+@use "../../scss/rules.scss" as rules;
 
 td,
 input,
 button,
 select,
 body {
-  font-family: var.$chinese_rules !important;
+  font-family: rules.$chinese_rules !important;
 }
