@@ -1,0 +1,10 @@
+@use "../../scss/rules.scss" as rules;
+
+.react-code-text {
+  font-family: rules.$code_rules;
+}
+
+#read-only-cursor-text-area,
+.text-mono {
+  font-family: rules.$code_rules !important;
+}
