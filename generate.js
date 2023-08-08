@@ -6,14 +6,6 @@ import { fileURLToPath } from 'url'
 // 获取当前文件的目录
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// 移除可能存在的BOM
-function removeBOM (content) {
-  if (content.charCodeAt(0) === 0xfeff) {
-    return content.slice(1)
-  }
-  return content
-}
-
 // 写入文件内容
 function writeFileContent (filePath, content) {
   return new Promise((resolve, reject) => {
@@ -66,9 +58,8 @@ async function main () {
     }
 
     // 读取文件内容
-    let sourceContent = fs.readFileSync(sourcePath, 'utf8')
+    const sourceContent = fs.readFileSync(sourcePath, 'utf8')
     // 移除可能存在的BOM
-    sourceContent = removeBOM(sourceContent)
     // 编译主Sass文件
     const cssContent = await compileSass(mainSassPath)
 

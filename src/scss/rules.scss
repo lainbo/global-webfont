@@ -1,10 +1,6 @@
 @use "./var.scss" as var;
 
-@font-face {
-  font-family: Cus_Emoji;
-  src: local(var.$emoji), local("Segoe UI Emoji"), local("Segoe UI Symbol"), local("Apple Color Emoji"), local("Noto Color Emoji");
-  unicode-range: U+1F000-1F644, U+203C-3299;
-}
+
 
 // 系统字体规则
 $system_rules: Cus_Emoji, var.$chinese-base, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
