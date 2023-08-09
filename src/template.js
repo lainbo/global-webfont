@@ -12,8 +12,8 @@
 // ==/UserScript==
 
 ;(function () {
-  let css = ''
-  css += '{$1}'
+  // eslint-disable-next-line prefer-const
+  let css = '{$1}'
   const endsWithDomain = domain => window.location.hostname?.endsWith(domain)
   // {$2}
 

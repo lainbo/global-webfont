@@ -1,0 +1,5 @@
+@use "../../scss/rules.scss" as rules;
+
+.wx_wap_page {
+  font-family: rules.$chinese_rules !important;
+}
