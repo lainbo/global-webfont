@@ -50,42 +50,43 @@ async function main () {
   // 特殊处理文件夹路径
   const specialHandlingPath = path.resolve(__dirname, 'src/specialHandling')
 
-  try {
-    // 如果dist目录不存在，则创建它
-    const distDirPath = path.dirname(targetPath)
-    if (!fs.existsSync(distDirPath)) {
-      fs.mkdirSync(distDirPath, { recursive: true })
-    }
-
-    // 读取文件内容
-    const sourceContent = fs.readFileSync(sourcePath, 'utf8')
-    // 移除可能存在的BOM
-    // 编译主Sass文件
-    const cssContent = await compileSass(mainSassPath)
-
-    // 获取特殊处理文件夹下所有的子文件夹名称
-    const specialHandlingFolders = await fs.promises.readdir(specialHandlingPath)
-
-    // 生成特殊处理的代码
-    const specialHandlingCode = []
-    for (const folder of specialHandlingFolders) {
-      const sassFilePath = path.join(specialHandlingPath, folder, 'index.scss')
-      const sassContent = await compileSass(sassFilePath)
-      specialHandlingCode.push(
-        `  if (endsWithDomain('${folder}')) {\n` + `    css += '${sassContent}'\n` + '  }'
-      )
-    }
-
-    // 替换字符串
-    const resultContent = sourceContent
-      .replace('{$1}', cssContent)
-      .replace('{$2}', `{$2}\n${specialHandlingCode.join('\n')}`)
-
-    // 写入结果到目标文件
-    await writeFileContent(targetPath, resultContent)
-  } catch (err) {
-    console.error(err)
+  // 如果dist目录不存在，则创建它
+  const distDirPath = path.dirname(targetPath)
+  if (!fs.existsSync(distDirPath)) {
+    fs.mkdirSync(distDirPath, { recursive: true })
   }
+
+  // 读取文件内容
+  const sourceContent = fs.readFileSync(sourcePath, 'utf8')
+  // 编译主Sass文件
+  const cssContent = await compileSass(mainSassPath)
+
+  // 获取特殊处理文件夹下所有的子文件夹名称
+  const specialHandlingFolders = await fs.promises.readdir(specialHandlingPath)
+
+  // 生成特殊处理的代码
+  const mapEntries = []
+  for (const folder of specialHandlingFolders) {
+    const sassFilePath = path.join(specialHandlingPath, folder, 'index.scss')
+    const sassContent = await compileSass(sassFilePath)
+    mapEntries.push(`['${folder}', '${sassContent}']`)
+  }
+  function createSpaces (frequency) {
+    return ' '.repeat(frequency)
+  }
+
+  const mapInitCode =
+`const domainCssMap = new Map([${mapEntries.join(', ')}])
+${createSpaces(2)}const domainCss = fuzzyMatchValueOfMap(domainCssMap, window.location.hostname)
+${createSpaces(2)}if (domainCss) cssContent += domainCss`
+
+  // 替换字符串
+  const resultContent = sourceContent
+    .replace('{$1}', cssContent)
+    .replace('// {$2}', `${mapInitCode}`)
+
+  // 写入结果到目标文件
+  await writeFileContent(targetPath, resultContent)
 }
 
 // 执行主函数

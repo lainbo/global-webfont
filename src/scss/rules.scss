@@ -1,7 +1,7 @@
 @use "./var.scss" as var;
 
 // 系统字体规则
-$system_rules: Cus_Emoji, var.$chinese-base, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
+$system_rules: Cus_Emoji, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
 
 // 中文+印欧语系规则
 $chinese_rules: var.$english, var.$chinese, $system_rules;

@@ -1,0 +1,8 @@
+@use "../../scss/rules.scss" as rules;
+
+h1,
+h2,
+h3,
+.b_searchboxForm {
+  font-family: rules.$chinese_rules !important;
+}

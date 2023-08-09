@@ -1,8 +1,6 @@
 @use "./var.scss" as var;
 @use "./rules.scss" as rules;
 @use "./languages.scss" as languages;
-// @import url("https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css");
-// @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Noto+Naskh+Arabic:wght@500&family=Noto+Sans+KR&family=Noto+Sans+SC&display=swap');
 
 @font-face {
   font-family: Cus_Emoji;
@@ -20,6 +18,14 @@ body,
 html,
 #{languages.$chinese-indo-european-selector} {
   font-family: rules.$chinese_rules;
+}
+
+html:lang(ja) body {
+  font-family: var.$japanese, rules.$chinese_rules;
+}
+
+html:lang(ko) body {
+  font-family: var.$english, var.$korean, rules.$chinese_rules;
 }
 
 pre,
