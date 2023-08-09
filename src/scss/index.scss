@@ -21,7 +21,7 @@ html,
 }
 
 html:lang(ja) body {
-  font-family: var.$japanese, rules.$chinese_rules;
+  font-family: var.$english, var.$japanese, rules.$chinese_rules;
 }
 
 html:lang(ko) body {
