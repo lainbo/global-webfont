@@ -11,10 +11,10 @@
 ### 处理特殊情况
 一些网站可能对某些DOM强行写了样式，导致默认的全局处理CSS优先级不够而无法覆盖字体。
 
-对于这些无法生效的网站，可以在`specialHandling`文件夹里面新建一个子文件夹，子文件夹的名称为无效网站的域名。
+对于这些无法生效的网站，可以在`specified`文件夹里面新建一个子文件夹，子文件夹的名称为无法生效网站的域名。
 
 比如: Youtube的所有评论字体不生效，此时我们需要
-1. 在`specialHandling`文件夹下新建文件夹并起名为`youtube.com`，这将匹配`*.youtube.com`
+1. 在`specified`文件夹下新建文件夹并起名为`youtube.com`，这将匹配`*.youtube.com`
 2. 在`youtube.com`文件夹中新建`index.scss`
 3. 使用浏览器的开发工具来确定，是哪个特定DOM的CSS导致全局字体无效
 4. 在刚才新建的`index.scss`中写能够覆盖其本身样式的css/scss代码

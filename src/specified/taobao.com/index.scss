@@ -1,0 +1,9 @@
+@use "../../scss/rules.scss" as rules;
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: rules.$chinese_rules !important;
+}
