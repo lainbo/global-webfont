@@ -4,6 +4,9 @@ td,
 input,
 button,
 select,
-body {
+body,
+.qm_con_body_content,
+.tcolor,
+.sub_title {
   font-family: rules.$chinese_rules !important;
 }
