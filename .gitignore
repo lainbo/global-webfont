@@ -10,6 +10,7 @@ lerna-debug.log*
 .VSCodeCounter
 node_modules
 *.local
+dist/index.css
 
 # Editor directories and files
 .idea
