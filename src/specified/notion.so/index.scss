@@ -1,0 +1,5 @@
+@use "../../scss/rules.scss" as rules;
+
+.notion-app-inner {
+  font-family: rules.$chinese_rules !important;
+}
