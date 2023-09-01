@@ -1,11 +1,11 @@
 @use "../../scss/rules.scss" as rules;
 
-*,
-textarea {
+* {
   font-family: rules.$chinese_rules;
 }
 
 h3,
-textarea {
+textarea,
+#result-stats {
   font-family: rules.$chinese_rules !important;
 }
