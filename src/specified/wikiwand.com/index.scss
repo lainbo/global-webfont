@@ -1,0 +1,6 @@
+@use "../../scss/var.scss" as var;
+
+#article-root {
+  --font-sans: #{var.$chinese} !important;
+  --font-serif: #{var.$serif} !important;
+}

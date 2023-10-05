@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name 全局自定义字体
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.5
 // @description  修改为自定义字体
 // @license      MIT
 // @author       Lainbo
 // @grant        GM_addStyle
 // @match        *://*/*
-// @run-at       document-start
+// @run-at       document-body
 // @icon         {$1}
 // ==/UserScript==
 
