@@ -44,18 +44,18 @@ function readFileContent (path) {
   return fs.readFileSync(path, 'utf8')
 }
 
+const resultFileName = 'index.user.js' // 目标文件名
 // 主函数
 async function main () {
-  // 源文件路径
-  const sourcePath = path.resolve(__dirname, 'src/assets/template.js')
-  // 图标路径
-  const iconPath = path.resolve(__dirname, 'src/assets/icon.txt')
-  // 目标文件路径
-  const targetPath = path.resolve(__dirname, 'dist/index.js')
-  // 主Sass文件路径
-  const mainSassPath = path.resolve(__dirname, 'src/scss/index.scss')
-  // 特殊处理文件夹路径
-  const specifiedPath = path.resolve(__dirname, 'src/specified')
+  const sourcePath = path.resolve(__dirname, 'src/assets/template.js')// 源文件路径
+
+  const iconPath = path.resolve(__dirname, 'src/assets/icon.txt')// 图标路径
+
+  const targetPath = path.resolve(__dirname, `dist/${resultFileName}`) // 目标文件路径
+
+  const mainSassPath = path.resolve(__dirname, 'src/scss/index.scss') // 主Sass文件路径
+
+  const specifiedPath = path.resolve(__dirname, 'src/specified') // 特殊处理文件夹路径
 
   // 如果dist目录不存在，则创建它
   const distDirPath = path.dirname(targetPath)
@@ -105,7 +105,7 @@ ${createSpaces(2)}if (domainCss) cssContent += domainCss`
 // 执行主函数
 try {
   await main()
-  console.log('脚本文件生成成功, 文件位于', path.resolve(__dirname, 'dist/index.js'))
+  console.log('脚本文件生成成功, 文件位于', path.resolve(__dirname, `dist/${resultFileName}`))
 } catch (error) {
   console.log('生成失败，原因是: ', error)
 }
