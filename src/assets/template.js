@@ -9,7 +9,6 @@
 // @updateURL    https://github.com/lainbo/global-webfont/raw/main/dist/index.user.js
 // @downloadURL  https://github.com/lainbo/global-webfont/raw/main/dist/index.user.js
 // @match        *://*/*
-// @run-at       document-body
 // @icon         {$1}
 // ==/UserScript==
 
