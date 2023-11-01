@@ -1,0 +1,6 @@
+@use "../../scss/var.scss" as var;
+
+[class^=__variable] {
+  --font-sans: #{var.$chinese} !important;
+  --font-mono: #{var.$monospace} !important;
+}
