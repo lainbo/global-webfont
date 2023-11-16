@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 全局自定义字体
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  修改为自定义字体
 // @license      MIT
 // @author       Lainbo
@@ -16,7 +16,7 @@
   // eslint-disable-next-line prefer-const
   let cssContent = '{$2}'
   const fuzzyMatchValueOfMap = (mapMain, key) => {
-    const foundEntry = Array.from(mapMain.entries()).find(([k, v]) => key.includes(k))
+    const foundEntry = Array.from(mapMain.entries()).find(([k]) => key.includes(k))
     return foundEntry ? foundEntry[1] : null
   }
   // {$3}
