@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 全局自定义字体
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  修改为自定义字体
 // @license      MIT
 // @author       Lainbo
@@ -23,12 +23,11 @@
 
   // 通过GM_addStyle添加样式,并且返回是否成功
   function addStyleWithGM (cssText) {
-    if (typeof GM_addStyle !== 'undefined') {
+    const isGMAddStyleAvailable = typeof GM_addStyle !== 'undefined'
+    if (isGMAddStyleAvailable) {
       GM_addStyle(cssText)
-      return true
-    } else {
-      return false
     }
+    return isGMAddStyleAvailable
   }
 
   // 通过DOM添加样式
