@@ -1,0 +1,5 @@
+@use "../../scss/rules.scss" as rules;
+
+.itemInfo-wrap .sku-name {
+  font-family: rules.$chinese_rules !important;
+}
