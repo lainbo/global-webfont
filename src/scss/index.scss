@@ -45,30 +45,31 @@ textarea {
 }
 
 // 当声明了下方字体时，按照我的规则进行字体文件读取
-$replace-chinese-font-list: 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC', 'Helvetica';
+$replace-chinese-font-list: 'verdana', 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC', 'Helvetica';
 
 // 生成font-face的mixin
 @mixin generate-font-faces($font-list, $rules) {
   @each $font-family in $font-list {
-    $src-list: ();
+    $src-list: (
+    );
 
-    @each $rule in $rules {
-      @if type-of($rule)=='list' {
-        @each $inner-rule in $rule {
-          $src-list: append($src-list, unquote('local("#{$inner-rule}")'), comma);
-        }
-      }
-
-      @else {
-        $src-list: append($src-list, unquote('local("#{$rule}")'), comma);
+  @each $rule in $rules {
+    @if type-of($rule)=='list' {
+      @each $inner-rule in $rule {
+        $src-list: append($src-list, unquote('local("#{$inner-rule}")'), comma);
       }
     }
 
-    @font-face {
-      font-family: '#{$font-family}';
-      src: $src-list;
+    @else {
+      $src-list: append($src-list, unquote('local("#{$rule}")'), comma);
     }
   }
+
+  @font-face {
+    font-family: '#{$font-family}';
+    src: $src-list;
+  }
+}
 }
 
 // 生成中文字体的替换规则
