@@ -4,7 +4,7 @@
 $system_rules: Cus_Emoji, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
 
 // 中文规则
-$chinese_rules: var.$chinese, $system_rules;
+$chinese_rules: var.$english, var.$chinese, $system_rules;
 
 // 等宽字体规则
 $code_rules: var.$monospace, "Cascadia Mono", Menlo, Monaco, Consolas, $chinese_rules;
