@@ -1,0 +1,8 @@
+@use "../../scss/rules.scss" as rules;
+
+[class*="body-"],
+[class*="root-"],
+[class*="link-"],
+[class*="linkIsSelected-"] {
+  font-family: rules.$en_zh_rules !important;
+}
