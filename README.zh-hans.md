@@ -16,10 +16,11 @@
 比如: Youtube的所有评论字体不生效，此时我们需要
 1. 在`specified`文件夹下新建文件夹并起名为`youtube.com`，这将匹配`*.youtube.com`
 2. 在`youtube.com`文件夹中新建`index.scss`
-3. 使用浏览器的开发工具来确定，是哪个特定DOM的CSS导致全局字体无效
-4. 在刚才新建的`index.scss`中写能够覆盖其本身样式的css/scss代码
-5. 执行`npm run build`
-6. 将`dist`目录下的index.js内容，复制到Tampermonkey的代码框中
+3. 多个网站若使用相同的样式，可以将它们的网址字符列在一起，并以英文逗号分隔来命名文件夹，例如用“youtube.com,google.com”作为文件夹名
+4. 使用浏览器的开发工具来确定，是哪个特定DOM的CSS导致全局字体无效
+5. 在刚才新建的`index.scss`中写能够覆盖其本身样式的css/scss代码
+6. 执行`npm run build`
+7. 将`dist`目录下的index.js内容，复制到Tampermonkey的代码框中
 
 ### 如果你恰好喜欢我的字体方案，那么你需要安装以下字体以保证最佳使用体验
 1. [鸿蒙字体](https://developer.harmonyos.com/cn/docs/design/des-resources/general-0000001157315901), 下载页面中的“HarmonyOS Sans”

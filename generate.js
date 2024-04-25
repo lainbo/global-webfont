@@ -74,9 +74,12 @@ async function main () {
   // 生成特殊处理的代码
   const mapEntries = []
   for (const folder of specifiedFolders) {
+    const domains = folder.split(',').map(domain => domain.trim())
     const sassFilePath = path.join(specifiedPath, folder, 'index.scss')
     const sassContent = await compileSass(sassFilePath)
-    mapEntries.push(`['${folder}', '${sassContent}']`)
+    for (const domain of domains) {
+      mapEntries.push(`['${domain}', '${sassContent}']`)
+    }
   }
   function createSpaces (frequency) {
     return ' '.repeat(frequency)

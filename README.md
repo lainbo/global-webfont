@@ -18,10 +18,11 @@ For these sites that are not working, you can create a new subfolder inside the 
 For example: If the **comments** font on Youtube doesn't take effect, you should:
 1. Create a new folder named `youtube.com` under the `specified` directory, which will match `*.youtube.com`.
 2. Inside the `youtube.com` folder, create a new `index.scss` file.
-3. Use the browser's developer tools to identify which specific DOM's CSS is causing the global font to be ineffective.
-4. Write the css/scss code in the newly created `index.scss` to override its original style.
-5. Run `npm run build`.
-6. Copy the content of `index.js` from the `dist` directory into the Tampermonkey code box.
+3. If multiple websites use the same style, their URLs can be listed together and separated by a comma to name a folder, for example, using "youtube.com,google.com" as the folder name.
+4. Use the browser's developer tools to identify which specific DOM's CSS is causing the global font to be ineffective.
+5. Write the css/scss code in the newly created `index.scss` to override its original style.
+6. Run `npm run build`.
+7. Copy the content of `index.js` from the `dist` directory into the Tampermonkey code box.
 
 ### If you happen to like my font scheme, you will need to install the following fonts to ensure the best usage experience.
 1. [HarmonyOS Sans](https://developer.harmonyos.com/cn/docs/design/des-resources/general-0000001157315901), "HarmonyOS Sans" on the download page.

@@ -1,9 +1,0 @@
-@use "../../scss/rules.scss" as rules;
-
-body,
-button,
-input,
-select,
-textarea {
-  font-family: rules.$en_zh_rules !important;
-}
