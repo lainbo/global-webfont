@@ -1,0 +1,5 @@
+@use "../../scss/rules.scss" as rules;
+
+.notion-code-block .code-numbered {
+  font-family: rules.$code_rules, rules.$en_zh_rules !important;
+}
