@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 全局自定义字体
 // @namespace    http://tampermonkey.net/
-// @version      1.13
+// @version      1.14
 // @description  修改为自定义字体
 // @license      MIT
 // @author       Lainbo
