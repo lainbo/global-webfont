@@ -22,6 +22,8 @@
 .first-line-title,
 .pl__head,
 .pl__title,
-body {
+.bili-header .header-fav-card__info--title,
+.favorite-panel-popover__nav .tab-item__title,
+body[class="win"] {
   font-family: rules.$en_zh_rules !important;
 }
