@@ -1,0 +1,5 @@
+@use "../../scss/rules.scss" as rules;
+
+.markdown-body {
+  font-family: rules.$en_zh_rules;
+}
