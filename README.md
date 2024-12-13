@@ -24,12 +24,4 @@ For example: If the **comments** font on Youtube doesn't take effect, you should
 6. Run `npm run build`.
 7. Copy the content of `index.js` from the `dist` directory into the Tampermonkey code box.
 
-### If you happen to like my font scheme, you will need to install the following fonts to ensure the best usage experience.
-1. [HarmonyOS Sans](https://developer.harmonyos.com/cn/docs/design/des-resources/general-0000001157315901), "HarmonyOS Sans" on the download page.
-2. [Twemoji Mozilla](https://github.com/mozilla/twemoji-colr/releases/latest), Download ttf file
-3. [JetBrainsMono Nerd Font Mono](https://github.com/ryanoasis/nerd-fonts/releases/latest), Find JetBrainsMono.zip in Assets
-4. [Noto Sans SC](https://fonts.google.com/noto/specimen/Noto+Sans+SC?query=Noto+Sans+SC), Click the Download family button in the upper right corner
-5. [Noto Sans Japanese](https://fonts.google.com/noto/specimen/Noto+Sans+JP?query=Noto+Sans+JP), Click the Download family button in the upper right corner
-6. [Noto Sans Korean](https://fonts.google.com/noto/specimen/Noto+Sans+KR?query=Noto+Sans+KR), Click the Download family button in the upper right corner
-7. [Noto Naskh Arabic](https://fonts.google.com/noto/specimen/Noto+Naskh+Arabic?query=Noto+Naskh+Arabic), Click the Download family button in the upper right corner
-8. Install the ttf or otf files of all the weights of the above fonts, if you are not sure which files to install, just install them all.
+### If you happen to like my font scheme, then you'll need to install the fonts in var.scss for the best experience!
