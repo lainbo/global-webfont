@@ -48,7 +48,7 @@ textarea {
 $replace-chinese-font-list: 'verdana', 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC', 'Helvetica';
 
 // 生成font-face的mixin
-@mixin generate-font-faces($font-list, $rules) {
+@mixin generate-font-faces($font-list, $rules, $weight: 1 999, $style: normal oblique) {
   @each $font-family in $font-list {
     $src-list: (
     );
@@ -68,9 +68,11 @@ $replace-chinese-font-list: 'verdana', 'Microsoft YaHei', '微软雅黑', '-appl
   @font-face {
     font-family: '#{$font-family}';
     src: $src-list;
+    font-weight: $weight;
+    font-style: $style;
   }
 }
 }
 
 // 生成中文字体的替换规则
-@include generate-font-faces($replace-chinese-font-list, rules.$chinese_rules);
+@include generate-font-faces($replace-chinese-font-list, rules.$chinese_rules_for_src);

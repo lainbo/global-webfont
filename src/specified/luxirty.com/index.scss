@@ -1,5 +1,5 @@
 @use "../../scss/rules.scss" as rules;
 
 :root {
-  --fr-font-family: rules.$en_zh_rules;
+  --fr-font-family: #{rules.$en_zh_rules};
 }

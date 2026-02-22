@@ -3,9 +3,15 @@
 // 系统字体规则
 $system_rules: Cus_Emoji, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
 
+// 用于 @font-face src 的系统字体规则（排除非系统字体名）
+$system_rules_for_src: var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial;
+
 // 中文规则
 $chinese_rules: var.$chinese, $system_rules;
 $en_zh_rules: var.$english, var.$chinese, $system_rules;
+
+// 用于 @font-face src 的中文规则
+$chinese_rules_for_src: var.$chinese, $system_rules_for_src;
 
 // 等宽字体规则
 $code_rules: var.$monospace, "Cascadia Mono", Menlo, Monaco, Consolas, $chinese_rules;
