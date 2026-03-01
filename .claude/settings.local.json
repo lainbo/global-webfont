@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm run build)",
+      "Bash(node -e \"const fs=require\\(''fs''\\);const c=fs.readFileSync\\(''dist/index.user.js'',''utf-8''\\);const i=c.indexOf\\(\"\"''x.com''\"\"\\);console.log\\(c.slice\\(i,i+200\\)\\)\")"
+    ]
+  }
+}

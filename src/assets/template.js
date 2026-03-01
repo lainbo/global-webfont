@@ -16,7 +16,7 @@
   // eslint-disable-next-line prefer-const
   let cssContent = '{$2}'
   const fuzzyMatchValueOfMap = (mapMain, key) => {
-    const foundEntry = Array.from(mapMain.entries()).find(([k]) => key.includes(k))
+    const foundEntry = Array.from(mapMain.entries()).find(([k]) => key === k || key.endsWith('.' + k))
     return foundEntry ? foundEntry[1] : null
   }
   // {$3}
