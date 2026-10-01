@@ -1,7 +1,10 @@
 // 字体定义
 $chinese: "MiSans VF";
+// 可变字体的普通字重；静态字体按各字重文件匹配。
+$regular-weight: 400;
 $serif: "Noto Serif SC";
-$english: "MiSans VF";
+// 默认跟随中文字体；需要不同的英文字体时再单独设置。
+$english: $chinese;
 $japanese: "Noto Sans JP";
 $korean: "Noto Sans KR";
 $arabic: "Noto Naskh Arabic";
@@ -16,4 +19,4 @@ $system: "Segoe UI";
 $monospace: "JetBrains Mono";
 
 // fallback 字体
-$chinese-base: "MiSans L3";
+$chinese-base: "vivo Sans SC L3";

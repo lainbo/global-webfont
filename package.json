@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "sass:watch": "sass --no-charset --no-source-map --watch src/scss/index.scss:dist/index.css",
-    "build": "node ./generate.js"
+    "build": "node ./generate.js",
+    "check": "eslint generate.js --env node && eslint src/assets/template.js --global GM_addStyle && node --check dist/index.user.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,6 @@
     "eslint-plugin-n": "^16.4.0",
     "eslint-plugin-promise": "^6.1.1",
     "sass": "^1.69.5"
-  }
+  },
+  "packageManager": "pnpm@8.15.9"
 }

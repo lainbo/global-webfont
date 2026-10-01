@@ -1,27 +1,21 @@
 # Global-webfont
-English | [简体中文](./README.zh-hans.md)  
 
-A tool for generating JavaScript code, designed to produce a Tampermonkey script that alters the default font of a website.
-+ It doesn't load any online fonts, just modifies the CSS declarations.
-+ For any declared font, ensure it's correctly installed on your computer, otherwise it won't take effect.
+[简体中文文档](./README.zh-hans.md)
 
-### Usage
-1. In the `src/scss/var.scss` file, modify the font names corresponding to each language to your preference.
-2. Run `npm run build`.
-3. Copy the content of `index.js` from the `dist` directory into the Tampermonkey code box.
+Generate a Tampermonkey userscript that applies configured local fonts. Configure fonts in `src/scss/var.scss`, install them on your computer, then run:
 
-### Handling Special Cases
-Some websites may enforce styles on certain DOM elements, making the default global CSS not of high enough priority to override the font.
+```sh
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run check
+```
 
-For these sites that are not working, you can create a new subfolder inside the `specified` folder with the name of the domain name of the site that is not working.
+The project pins pnpm 8.15.9. Paste the complete `dist/index.user.js` into the existing Tampermonkey editor, save, and reload the target page. Building does not update the installed userscript automatically.
 
-For example: If the **comments** font on Youtube doesn't take effect, you should:
-1. Create a new folder named `youtube.com` under the `specified` directory, which will match `*.youtube.com`.
-2. Inside the `youtube.com` folder, create a new `index.scss` file.
-3. If multiple websites use the same style, their URLs can be listed together and separated by a comma to name a folder, for example, using "youtube.com,google.com" as the folder name.
-4. Use the browser's developer tools to identify which specific DOM's CSS is causing the global font to be ineffective.
-5. Write the css/scss code in the newly created `index.scss` to override its original style.
-6. Run `npm run build`.
-7. Copy the content of `index.js` from the `dist` directory into the Tampermonkey code box.
+The default family is `MiSans VF`. `$regular-weight: 425` maps ordinary weight 400 to the variable font’s 425 instance; other requested weights retain their values within the font’s supported range of 150–700. HONOR Sans CN is also supported through its nine static font files; `$regular-weight` applies only to variable fonts.
 
-### If you happen to like my font scheme, then you'll need to install the fonts in var.scss for the best experience!
+The global rules provide default fonts and local aliases for common font names. Site overrides live in `src/specified/<domain>/index.scss`; comma-separated directory names share rules across domains. Matching includes the exact domain and its subdomains.
+
+X/Twitter overrides cover text, numbers, punctuation, form controls and dynamically inserted content while preserving code fonts and SVG icons. Font fallback depends on installed fonts and their glyph coverage. See the Chinese documentation for the CSS model and its limits.
+
+For browser regression checks, serve the repository with `python3 -m http.server 8765 --bind 127.0.0.1` and open `http://127.0.0.1:8765/tests/font-coverage.html`. The fixture runs the generated script with simulated hostnames inside real browser documents; verify the live website separately. Download the JSON report for reproducible results and the generated script hash.

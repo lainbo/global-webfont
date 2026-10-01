@@ -1,0 +1,14 @@
+@use "../../scss/rules.scss" as rules;
+
+// X 在文字节点上显式声明 TwitterChirp；直接覆盖也适用于后来插入的内容。
+html body,
+html body *,
+html body input::placeholder,
+html body textarea::placeholder {
+  font-family: rules.$en_zh_rules !important;
+}
+
+html body :is(pre, code, kbd, samp),
+html body :is(pre, code, kbd, samp) * {
+  font-family: rules.$code_rules !important;
+}

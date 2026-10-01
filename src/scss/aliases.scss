@@ -1,0 +1,66 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use "./var.scss" as var;
+@use "./rules.scss" as rules;
+
+$families: "Verdana", "Microsoft YaHei", "微软雅黑", "-apple-system", "TwitterChirp", "PingFang SC", "Helvetica";
+$honor-weights: (100: "Thin", 200: "ExtraLight", 300: "Light", 400: "Regular", 500: "Medium", 600: "DemiBold", 700: "Bold", 800: "ExtraBold", 900: "Heavy");
+
+@function local-sources($fonts, $weight: 400) {
+  $sources: ();
+  @each $font in $fonts {
+    // 本机 local() 需要 PostScript 名，页面 font-family 仍使用字体族名。
+    @if $font == "MiSans VF" {
+      $font: "MiSansVF";
+    } @else if $font == "vivo Sans SC VF" {
+      $font: "vivoSansSCVF";
+    } @else if $font == "HONOR Sans CN" {
+      $font: "HONORSansCN-#{map.get($honor-weights, $weight)}";
+    }
+    $sources: list.append($sources, string.unquote('local("#{$font}")'), comma);
+  }
+  @return $sources;
+}
+
+@mixin faces($family, $sources, $unicode-range: null) {
+  @if list.nth($sources, 1) == "HONOR Sans CN" {
+    @each $weight in map.keys($honor-weights) {
+      @font-face {
+        font-family: $family;
+        src: local-sources($sources, $weight);
+        font-weight: $weight;
+        font-style: normal;
+        unicode-range: $unicode-range;
+      }
+    }
+  } @else {
+    @font-face {
+      font-family: $family;
+      src: local-sources($sources);
+      font-weight: 1 1000;
+      font-style: normal;
+      unicode-range: $unicode-range;
+    }
+
+    // 只重映射普通字重；其他字重继续使用上面的可变字体，保留标题和粗体层级。
+    @font-face {
+      font-family: $family;
+      src: local-sources($sources);
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings: "wght" var.$regular-weight;
+      unicode-range: $unicode-range;
+    }
+  }
+}
+
+@each $family in rules.stack(var.$chinese, var.$english) {
+  @include faces($family, $family);
+}
+
+@each $family in $families {
+  @include faces($family, rules.$chinese_sources);
+  // src 是同一字形资源的候选列表；分开声明才能让拉丁字符跟随英文字体设置。
+  @include faces($family, rules.$english_sources, (U+0000-024F, U+1E00-1EFF, U+2000-206F));
+}

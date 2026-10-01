@@ -1,12 +1,6 @@
 @use "./var.scss" as var;
 @use "./rules.scss" as rules;
-@use "./languages.scss" as languages;
-
-@font-face {
-  font-family: Cus_Emoji;
-  src: local(var.$emoji), local("Segoe UI Emoji"), local("Segoe UI Symbol"), local("Apple Color Emoji"), local("Noto Color Emoji");
-  unicode-range: U+1F000-1F644, U+203C-3299;
-}
+@use "./aliases.scss";
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -14,65 +8,31 @@ html {
   text-rendering: optimizeLegibility;
 }
 
-body,
 html,
-#{languages.$chinese-indo-european-selector} {
+body {
   font-family: rules.$en_zh_rules;
 }
 
 html:lang(ja) body {
-  font-family: var.$english, var.$japanese, rules.$chinese_rules;
+  font-family: rules.stack(var.$english, var.$japanese, rules.$chinese_rules);
 }
 
 html:lang(ko) body {
-  font-family: var.$english, var.$korean, rules.$chinese_rules;
+  font-family: rules.stack(var.$english, var.$korean, rules.$chinese_rules);
 }
 
 pre,
 code,
 kbd,
-samp {
+samp,
+:is(pre, code, kbd, samp) * {
   font-family: rules.$code_rules !important;
 }
 
 button,
 input,
-keygen,
 optgroup,
 select,
 textarea {
   font-family: inherit;
 }
-
-// 当声明了下方字体时，按照我的规则进行字体文件读取
-$replace-chinese-font-list: 'verdana', 'Microsoft YaHei', '微软雅黑', '-apple-system', 'TwitterChirp', 'PingFang SC', 'Helvetica';
-
-// 生成font-face的mixin
-@mixin generate-font-faces($font-list, $rules, $weight: 1 999, $style: normal oblique) {
-  @each $font-family in $font-list {
-    $src-list: (
-    );
-
-  @each $rule in $rules {
-    @if type-of($rule)=='list' {
-      @each $inner-rule in $rule {
-        $src-list: append($src-list, unquote('local("#{$inner-rule}")'), comma);
-      }
-    }
-
-    @else {
-      $src-list: append($src-list, unquote('local("#{$rule}")'), comma);
-    }
-  }
-
-  @font-face {
-    font-family: '#{$font-family}';
-    src: $src-list;
-    font-weight: $weight;
-    font-style: $style;
-  }
-}
-}
-
-// 生成中文字体的替换规则
-@include generate-font-faces($replace-chinese-font-list, rules.$chinese_rules_for_src);

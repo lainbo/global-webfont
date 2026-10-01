@@ -1,17 +1,24 @@
+@use "sass:list";
 @use "./var.scss" as var;
 
-// 系统字体规则
-$system_rules: Cus_Emoji, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif;
+@function stack($groups...) {
+  $fonts: ();
+  @each $group in $groups {
+    @each $font in $group {
+      @if not list.index($fonts, $font) {
+        $fonts: list.append($fonts, $font, comma);
+      }
+    }
+  }
+  @return $fonts;
+}
 
-// 用于 @font-face src 的系统字体规则（排除非系统字体名）
-$system_rules_for_src: var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial;
+$emoji_rules: var.$emoji, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+$system_rules: stack($emoji_rules, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial, sans-serif);
+$chinese_rules: stack(var.$chinese, $system_rules);
+$en_zh_rules: stack(var.$english, $chinese_rules);
+$code_rules: stack(var.$monospace, "Cascadia Mono", Menlo, Monaco, Consolas, var.$chinese, $emoji_rules, var.$chinese-base, monospace);
 
-// 中文规则
-$chinese_rules: var.$chinese, $system_rules;
-$en_zh_rules: var.$english, var.$chinese, $system_rules;
-
-// 用于 @font-face src 的中文规则
-$chinese_rules_for_src: var.$chinese, $system_rules_for_src;
-
-// 等宽字体规则
-$code_rules: var.$monospace, "Cascadia Mono", Menlo, Monaco, Consolas, $chinese_rules;
+// local() 只能解析已安装字体，不能把虚拟字体名或通用字体族当作字体文件。
+$chinese_sources: stack(var.$chinese, var.$chinese-base, var.$japanese, var.$korean, var.$arabic, var.$system, Roboto, Helvetica, Arial);
+$english_sources: stack(var.$english, var.$system, Roboto, Helvetica, Arial);

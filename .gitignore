@@ -20,3 +20,5 @@ dist/index.css
 *.njsproj
 *.sln
 *.sw?
+
+artifacts/

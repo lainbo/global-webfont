@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name 全局自定义字体
 // @namespace    http://tampermonkey.net/
-// @version      1.19
+// @version      1.20
 // @description  修改为自定义字体
 // @license      MIT
 // @author       Lainbo
@@ -9,39 +9,27 @@
 // @updateURL    https://github.com/lainbo/global-webfont/raw/main/dist/index.user.js
 // @downloadURL  https://github.com/lainbo/global-webfont/raw/main/dist/index.user.js
 // @match        *://*/*
-// @icon         {$1}
+// @run-at       document-start
+// @icon         {{ICON}}
 // ==/UserScript==
 
 ;(function () {
-  // eslint-disable-next-line prefer-const
-  let cssContent = '{$2}'
-  const fuzzyMatchValueOfMap = (mapMain, key) => {
-    const foundEntry = Array.from(mapMain.entries()).find(([k]) => key === k || key.endsWith('.' + k))
-    return foundEntry ? foundEntry[1] : null
-  }
-  // {$3}
+  const globalCss = '{{GLOBAL_CSS}}'
+  const siteStyles = [] /* SITE_STYLES */
+  const hostname = window.location.hostname
+  const css = [globalCss, ...siteStyles
+    .filter(({ domains }) => domains.some(domain => hostname === domain || hostname.endsWith('.' + domain)))
+    .map(({ css }) => css)].join('\n')
 
-  // 通过GM_addStyle添加样式,并且返回是否成功
-  function addStyleWithGM (cssText) {
-    const isGMAddStyleAvailable = typeof GM_addStyle !== 'undefined'
-    if (isGMAddStyleAvailable) {
-      GM_addStyle(cssText)
+  if (typeof GM_addStyle === 'function') {
+    GM_addStyle(css)
+  } else {
+    const inject = () => {
+      const style = document.createElement('style')
+      style.textContent = css
+      ;(document.head || document.documentElement).appendChild(style)
     }
-    return isGMAddStyleAvailable
-  }
-
-  // 通过DOM添加样式
-  function addStyleWithDOM (cssText) {
-    const styleNode = document.createElement('style')
-    styleNode.appendChild(document.createTextNode(cssText));
-    (document.querySelector('head') || document.documentElement).appendChild(styleNode)
-  }
-
-  // 执行，并且判断是否成功
-  const resultsOfEnforcement = addStyleWithGM(cssContent)
-
-  // 如果不成功，则使用DOM方式
-  if (!resultsOfEnforcement) {
-    addStyleWithDOM(cssContent)
+    if (document.documentElement) inject()
+    else document.addEventListener('DOMContentLoaded', inject, { once: true })
   }
 })()
